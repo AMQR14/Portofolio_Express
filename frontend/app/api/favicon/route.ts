@@ -50,7 +50,7 @@ export async function GET() {
 
         // 3. Crop to a circle and return as PNG
         const circleBuffer = await makeCircle(rawBuffer);
-        return new NextResponse(circleBuffer, {
+        return new NextResponse(new Uint8Array(circleBuffer), {
           status: 200,
           headers: {
             "Content-Type": "image/png",
