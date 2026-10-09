@@ -3986,13 +3986,36 @@ svg[data-icon] {
   border-top: 1px solid var(--ctp-surface1);
   border-radius: 0;
   padding: 1.35rem 0;
-  transition: border-color 0.3s var(--ds-ease-out);
+  transition: border-color 0.3s var(--ds-ease-out), transform 0.4s var(--ds-ease-out), all 0.3s var(--ds-ease-out);
   position: relative;
   overflow: hidden;
+
 }
 
-.admin-stat-card:hover {
-  border-color: var(--ctp-mauve);
+.admin-stat-card::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 -1rem -1rem;
+  border-radius: var(--ds-radius-sm);
+  pointer-events: none;
+  content: "";
+  opacity: 0;
+  background: radial-gradient(ellipse at 50% 0%,
+      rgba(203, 166, 247, 0.1),
+      transparent 72%);
+  transition: opacity 0.4s var(--ds-ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .admin-stat-card:hover {
+    border-color: var(--ctp-mauve);
+    transform: translateY(-4px);
+    padding: 1.35rem 10px;
+  }
+
+  .admin-stat-card:hover::before {
+    opacity: 1;
+  }
 }
 
 .admin-stat-value {
