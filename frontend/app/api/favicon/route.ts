@@ -54,8 +54,9 @@ export async function GET() {
           status: 200,
           headers: {
             "Content-Type": "image/png",
-            // Revalidate every 60 s so changes appear quickly
+            // Browser can cache for 60s, but Vercel's edge CDN must NOT cache this
             "Cache-Control": "public, max-age=60, must-revalidate",
+            "Vercel-CDN-Cache-Control": "no-store",
           },
         });
       }
