@@ -5,6 +5,8 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import Magnetic from "../../components/Magnetic";
 import { Home, ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react";
+import ProjectGallery from "../../components/ProjectGallery";
+import HeroLightbox from "../../components/HeroLightbox";
 
 interface Project {
   id: number;
@@ -292,12 +294,7 @@ export default function ProjectDetailPage() {
           </div>
           <div className="ds-detail-screen">
             {project.image ? (
-              <img
-                src={project.image}
-                alt={`${project.title} project preview`}
-                className="ds-detail-image"
-                fetchPriority="high"
-              />
+              <HeroLightbox src={project.image} title={project.title} />
             ) : (
               <div className="ds-detail-image-fallback" aria-hidden="true">
                 <span>{project.title}</span>
@@ -371,27 +368,7 @@ export default function ProjectDetailPage() {
                 {project.gallery.length.toString().padStart(2, "0")} views
               </span>
             </div>
-            <div className="ds-detail-gallery-grid">
-              {project.gallery.map((image, index) => (
-                <figure
-                  className="ds-detail-gallery-item"
-                  key={`${image}-${index}`}
-                  data-reveal
-                >
-                  <div className="ds-detail-gallery-image-wrap">
-                    <img
-                      src={image}
-                      alt={`${project.title} detail screenshot ${index + 1}`}
-                      loading="lazy"
-                    />
-                  </div>
-                  <figcaption>
-                    <span>Detail view</span>
-                    <span>{(index + 1).toString().padStart(2, "0")}</span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
+              <ProjectGallery images={project.gallery} title={project.title} />
           </section>
         )}
 
