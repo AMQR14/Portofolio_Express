@@ -16,11 +16,22 @@ export default function Magnetic({
   const ref = useRef<HTMLDivElement>(null);
   const origin = useRef<{ x: number; y: number } | null>(null);
 
+  const isCapable = () => {
+    if (typeof window === "undefined") return false;
+    // Disable magnetic physics on screens <= 900px or touch screens to keep mobile buttons completely stable
+    if (window.innerWidth <= 900) return false;
+    return (
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  };
+
   const handleMouseEnter = () => {
     const element = ref.current;
     if (!element) return;
     element.classList.remove("is-returning");
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+
+    if (!isCapable()) {
       element.style.setProperty("translate", "0 0");
       const child = element.firstElementChild;
       if (child instanceof HTMLElement) child.style.setProperty("translate", "0 0");
@@ -38,6 +49,7 @@ export default function Magnetic({
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isCapable()) return;
     if (!ref.current || !origin.current) return;
     const middleX = e.clientX - origin.current.x;
     const middleY = e.clientY - origin.current.y;
@@ -57,7 +69,7 @@ export default function Magnetic({
     origin.current = null;
     const element = ref.current;
     if (!element) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (!isCapable()) {
       element.classList.remove("is-returning");
       element.style.setProperty("translate", "0 0");
       const child = element.firstElementChild;

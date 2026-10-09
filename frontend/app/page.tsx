@@ -356,9 +356,8 @@ export default function Home() {
           Helping brands thrive in the digital world. I combine artistic
           sensibility with robust engineering to turn ideas into{" "}
           <span className="ds-text-accent-reveal">
-            unforgettable digital experiences
+            unforgettable digital experiences.
           </span>
-          .
         </h2>
 
         <div className="ds-about-grid" data-reveal>
@@ -393,14 +392,7 @@ export default function Home() {
             </div>
 
             {/* Magnetic pill action buttons */}
-            <div
-              style={{
-                display: "flex",
-                gap: "1.5rem",
-                alignItems: "center",
-                flexWrap: "wrap",
-              }}
-            >
+            <div className="ds-about-cta-row">
               <Magnetic strength={0.3} textStrength={0.5}>
                 {resumeDownloadUrl ? (
                   <a

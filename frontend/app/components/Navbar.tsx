@@ -155,8 +155,8 @@ export default function Navbar() {
         {/* Left: Signature "© Code by [Name]" */}
         <Magnetic strength={0.2} textStrength={0.35}>
           <Link href="/" className="ds-logo">
-            <span>©</span>
-            <span>Code by</span>
+            <span className="ds-logo-symbol">©</span>
+            <span className="ds-logo-label">Code by</span>
             <span className="ds-logo-author">{profileName}</span>
           </Link>
         </Magnetic>

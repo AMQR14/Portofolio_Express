@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -6,6 +6,12 @@ import Preloader from "./components/Preloader";
 import PageTransition from "./components/PageTransition";
 import LenisProvider from "./components/LenisProvider";
 import ScrollReveal from "./components/ScrollReveal";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "Andi Muhammad Qismat Rajjab • Full-Stack Developer",
