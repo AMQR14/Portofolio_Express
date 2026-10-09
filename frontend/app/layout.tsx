@@ -8,9 +8,14 @@ import LenisProvider from "./components/LenisProvider";
 import ScrollReveal from "./components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Andi Muhammad Qismat Rajjab - Full Stack Developer - Portfolio",
+  title: "Andi Muhammad Qismat Rajjab • Full-Stack Developer",
   description:
     "Helping brands thrive in the digital world. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Andi Muhammad Qismat Rajjab",
+  icons: {
+    icon: "/api/favicon",
+    shortcut: "/api/favicon",
+    apple: "/api/favicon",
+  },
 };
 
 export default function RootLayout({
