@@ -5476,11 +5476,13 @@ svg[data-icon] {
   font-size: 1.05rem;
   line-height: 1.3;
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  max-height: 2.6em;
   overflow: hidden;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+  transition: max-height 0.3s ease;
+}
+
+.ds-cert-card:hover .ds-cert-title {
+  max-height: 6.5em;
 }
 
 .ds-cert-card-details .ds-cert-issuer,
