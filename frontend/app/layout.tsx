@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Preloader from "./components/Preloader";
+import PageTransition from "./components/PageTransition";
+import LenisProvider from "./components/LenisProvider";
+import ScrollReveal from "./components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "MyPortfolio – Portofolio Dinamis",
-  description: "Website portofolio dinamis dibuat dengan Next.js dan Express.js",
+  title: "Andi Muhammad Qismat Rajjab - Full Stack Developer - Portfolio",
+  description:
+    "Helping brands thrive in the digital world. Delivering tailor-made digital designs and building interactive websites from scratch. © Code by Andi Muhammad Qismat Rajjab",
 };
 
 export default function RootLayout({
@@ -13,13 +19,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id">
+    <html lang="en" data-scroll-behavior="auto">
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <footer className="footer">
-          <p>© 2026 MyPortfolio. Dibuat dengan ❤️ menggunakan Next.js & Express.js</p>
-        </footer>
+        <Preloader />
+        <LenisProvider>
+          <PageTransition>
+            <ScrollReveal />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </PageTransition>
+        </LenisProvider>
       </body>
     </html>
   );
